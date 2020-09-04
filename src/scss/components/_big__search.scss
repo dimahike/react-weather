@@ -1,0 +1,50 @@
+@import 'variables';
+
+.big__search {
+  background-image: url('https://images.squarespace-cdn.com/content/v1/55cfb535e4b061baebe310df/1587472623697-IC8B3J3ZIZI0AMIE7U8G/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/sky+photo+for+website+home+page.jpeg?format=2500w');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // height: 100%;
+  align-content: center;
+  padding: 300px 15%;
+}
+
+.extra__cities {
+  display: flex;
+  justify-content: space-around;
+
+  // text-align: center;
+  @media screen and (max-width: 890px) {
+    flex-flow: column;
+  }
+
+  .curr__place {
+    margin-top: 30px;
+    width: 50%;
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: #000;
+    opacity: 0.7;
+    @media screen and (max-width: 890px) {
+      width: 100%;
+    }
+    h3 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      span {
+        display: inline-flex;
+        align-items: center;
+        color: #fff;
+        img {
+          height: 50px;
+        }
+        span {
+          width: 55px;
+        }
+      }
+    }
+  }
+}

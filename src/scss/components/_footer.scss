@@ -1,0 +1,14 @@
+@import 'variables';
+
+.footer {
+  height: 100px;
+  background-color: #353131;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  p {
+    color: #fff;
+    align-self: center;
+    justify-self: center;
+  }
+}

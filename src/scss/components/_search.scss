@@ -1,0 +1,44 @@
+@import 'variables';
+
+%tplrepeaters {
+  font-size: 15px;
+  height: 40px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  padding: 0 10px;
+  text-align: center;
+  
+}
+
+.hide-input {
+  @media screen and (max-width: 620px) {
+    display: none;
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  &__input {
+    @extend %tplrepeaters;
+    width: 300px;
+    background-color: #fff;
+    margin-inline-end: 10px;
+  }
+  &__submit {
+    @extend %tplrepeaters;
+    width: 100px;
+    background-color: #515050;
+    color: #fff;
+  }
+  &__big__input {
+    font-size: 25px;
+    height: 60px;
+    border: 2px solid #eaeaea;
+    border-radius: 10px;
+    padding: 0 20px;
+    text-align: center;
+    width: 100%;
+    background-color: #fff;
+  }
+}

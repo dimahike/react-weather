@@ -1,0 +1,51 @@
+@import 'variables';
+
+.grid__container {
+    display: grid;
+  //   grid-gap: 35px;
+    grid-template-columns: auto auto;
+    background-color: #fff;
+    margin: 8% 10%;
+    padding: 5%;
+    border-radius: 10px;
+    @media screen and (max-width: 920px) {
+      grid-template-columns: auto;
+    }
+  }
+  
+  .grid1, .grid2 , .grid3, .grid4 {
+      margin: 0 20px;
+  }
+  
+  .grid1 {
+      margin-block-end: 45px;
+    p {
+      font-size: 150%;
+      font-style: bold;
+    }
+    div {
+      display: flex;
+  
+      .left {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        img {
+          padding: auto;
+          margin: 10px 0;
+          height: 150px;
+        }
+      }
+      .right {
+        flex-grow: 2.5;
+        display: flex;
+  
+        flex-flow: column;
+        justify-content: center;
+      }
+    }
+    p {
+      font-size: 150%;
+      font-style: bold;
+    }
+  }
