@@ -8,17 +8,6 @@ import PlaceWeather from './pages/PlaceWeather';
 import { Context } from './context';
 
 function App() {
-  // const format = React.useContext(Context);
-  // console.log('App temprFormat: ', format.temprFormat);
-
-  // localStorage.setItem(
-  //   'userData',
-  //   JSON.stringify({
-  //     temprFormat: format.temprFormat,
-  //   }),
-  // );
-  // const storeData = JSON.parse(localStorage.getItem('userData'));
-  // console.log('storeData: ', storeData);
 
   const [selectedFormat, setSelectedFormat] = React.useState({
     temprFormat: 'metric',
@@ -40,24 +29,17 @@ function App() {
     console.log('find place from App:', place);
   };
 
-  console.log('selectedFormat from App: ', selectedFormat);
-  // searchPlace = (place) => {
-  //   console.log("place in App: ", place);
-  // }
-
-  // console.log('app value provider', { selectedFormat });
-  // console.log("searchPlace in App: ", searchPlace);
   return (
     <Context.Provider value={selectedFormat}>
       <Router>
         <div className="wrapper">
           <Header searchPlace={searchPlace} onChangeTemprFormat={onHandleSelect} />
           <Switch>
-            <Route exact path="/">
-              <Home searchPlace={searchPlace} />
-            </Route>
             <Route exact path="/place/:placeName">
-              <PlaceWeather />
+              <PlaceWeather searchPlace={searchPlace}/>
+            </Route>
+            <Route path="/">
+              <Home searchPlace={searchPlace} />
             </Route>
           </Switch>
           <Footer />

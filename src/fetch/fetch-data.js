@@ -1,6 +1,10 @@
-export const fetchData = (urlFetch) => {
-  axios.get(urlFetch).then(({ data }) => {
-    console.log('data: ', data);
-    returnsetfetchData(data);
-  });
+import axios from 'axios';
+
+export const fetchPlace = async (urlFetch) => {
+  
+    await axios.get(urlFetch).then(({ data }) => {
+      console.log('data: ', data);
+      return data;
+    });
+  
 };

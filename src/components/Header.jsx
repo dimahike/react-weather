@@ -22,7 +22,7 @@ function Header({ onChangeTemprFormat, searchPlace }) {
           </Link>
         </div>
         <div>
-          <Search searchPlace={searchPlace} />
+          <Search searchPlace={searchPlace} getData={typeof fetchData} />
           <select
             onChange={(e) => onChangeTemprFormat(e)}
             className="header__select_type_temp"

@@ -1,16 +1,14 @@
 import React from 'react';
 import Search from './Search';
-// import axios from 'axios';
 
-// import { Context } from '../context';
 import { useFetch } from '../hooks/fetchData-hook';
+import { useHistory } from 'react-router-dom';
 
-function BigSearch({ searchPlace }) {
+function BigSearch({ searchPlace, alertMessage = false }) {
   const option = 'currPlace';
+  const history = useHistory();
 
   const { temprFormat, fetchData } = useFetch(option);
-
-  console.log('FfetchData in bigSearch: ', fetchData);
 
   let placeName;
   let weatherStates;
@@ -24,8 +22,23 @@ function BigSearch({ searchPlace }) {
     country = fetchData.sys.country;
   }
 
+  const handleClick = value => () => {
+    searchPlace(value);
+    history.push('/place/' + value);
+    console.log(value)
+  }
+
   return (
     <div className="big__search">
+      {alertMessage && (
+        <div className="alert-message">
+          <div>
+            <h2>We didn't find the search place.</h2>
+            <h3>Try one more time</h3>
+          </div>
+        </div>
+      )}
+
       <Search
         searchPlace={searchPlace}
         className="search__big__input"
@@ -36,7 +49,7 @@ function BigSearch({ searchPlace }) {
       {fetchData && (
         <div className="extra__cities">
           <div className="curr__place">
-            <h3>
+            <h3 onClick={handleClick(placeName)}>
               {placeName}, {country}
               <span>
                 {weatherStates.map((weatherState) => (
@@ -53,11 +66,6 @@ function BigSearch({ searchPlace }) {
               </span>
             </h3>
           </div>
-          {/* <div className="right">
-            <h3>
-              Kyiv, Ukraine <span> 27° C</span>
-            </h3>
-          </div> */}
         </div>
       )}
     </div>

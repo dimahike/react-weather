@@ -1,14 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-// import { useFetch } from '../hooks/fetchData-hook';
-
 function Search({ searchPlace, className, hiddenSubmit = true, mediaHideInput = true }) {
   const [inputValue, setInputValue] = React.useState('');
-  // const placeName = useParams().placeName;
   const history = useHistory();
-  // const option = 'currPlace';
-  // const { fetchData } = useFetch(option, inputValue);
+
 
   const onHandleInput = (event) => {
     setInputValue(event.target.value);
@@ -16,7 +12,6 @@ function Search({ searchPlace, className, hiddenSubmit = true, mediaHideInput = 
   };
 
   const onHandleSubmit = (event) => {
-    // alert('Отправленное город: ' + inputValue);
     searchPlace(inputValue);
     history.push('/place/' + inputValue);
     setInputValue('');

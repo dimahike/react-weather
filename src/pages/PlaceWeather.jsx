@@ -1,28 +1,36 @@
 import React from 'react';
-// import axios from 'axios';
 
-import CardWeather from '../components/CardWeather';
+import CurrWeather from '../components/CurrWeather';
 import { useFetch } from '../hooks/fetchData-hook';
 import BigSearch from '../components/BigSearch';
-// import { Context } from '../context';
+import DailyWeather from '../components/DailyWeather';
 
-function PlaceWeather() {
-  //   const [coord, setCoord] = React.useState();
-  //   const place = React.useContext(Context).place;
+function PlaceWeather({searchPlace}) {
   const option = 'weatherManyDays';
-  const { fetchData, temprFormat, place } = useFetch(option);
-  console.log('fetchData from placeWeather: ', fetchData);
+  const { fetchData, temprFormat, fetchPlace } = useFetch(option);
 
-  //   if (fetchData) {
-  //     const { current, daily } = fetchData;
-  //   }
+  console.log('fetchData from placeWeather: ', fetchData);
 
   return (
     <div className="place__weather">
       {fetchData ? (
-        <CardWeather weatherData={fetchData.current} temprFormat={temprFormat} place={place} />
+        <div className="card__weather">
+          <CurrWeather
+            CurrWeatherData={fetchData.current}
+            temprFormat={temprFormat}
+            place={fetchPlace}
+          />
+          {fetchData.daily.map((daily) => (
+            <DailyWeather
+              key={daily.dt}
+              dailyWeatherDate={daily}
+              temprFormat={temprFormat}
+              place={fetchPlace}
+            />
+          ))}
+        </div>
       ) : (
-        <BigSearch />
+        <BigSearch searchPlace={searchPlace} alertMessage/>
       )}
     </div>
   );
