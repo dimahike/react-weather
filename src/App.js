@@ -8,11 +8,14 @@ import PlaceWeather from './pages/PlaceWeather';
 import { Context } from './context';
 
 function App() {
-
   const [selectedFormat, setSelectedFormat] = React.useState({
     temprFormat: 'metric',
-    place: '',
+    place: {
+      address: '',
+      coordinates: '',
+    },
   });
+
 
   const onHandleSelect = (event) => {
     setSelectedFormat({
@@ -21,12 +24,11 @@ function App() {
     });
   };
 
-  const searchPlace = (place) => {
-    setSelectedFormat({
+  const searchPlace = (placeData) => {
+     setSelectedFormat({
       temprFormat: selectedFormat.temprFormat,
-      place,
+      place: placeData,
     });
-    console.log('find place from App:', place);
   };
 
   return (
@@ -36,7 +38,7 @@ function App() {
           <Header searchPlace={searchPlace} onChangeTemprFormat={onHandleSelect} />
           <Switch>
             <Route exact path="/place/:placeName">
-              <PlaceWeather searchPlace={searchPlace}/>
+              <PlaceWeather searchPlace={searchPlace} />
             </Route>
             <Route path="/">
               <Home searchPlace={searchPlace} />

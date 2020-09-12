@@ -11,7 +11,7 @@ function Header({ onChangeTemprFormat, searchPlace }) {
   return (
     <div className="header">
       <div className="container">
-        <div>
+        <div style={{ paddingTop: '20px' }}>
           <Link to="/">
             <div className="header__logo">
               <img width="38" src={weatherLogo} alt="Weater logo" />
@@ -21,8 +21,8 @@ function Header({ onChangeTemprFormat, searchPlace }) {
             </div>
           </Link>
         </div>
-        <div>
-          <Search searchPlace={searchPlace} getData={typeof fetchData} />
+        <div style={{ display: 'inline-flex', marginTop: "20px"}}>
+          <Search searchPlace={searchPlace} />
           <select
             onChange={(e) => onChangeTemprFormat(e)}
             className="header__select_type_temp"

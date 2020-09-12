@@ -22,11 +22,10 @@ function BigSearch({ searchPlace, alertMessage = false }) {
     country = fetchData.sys.country;
   }
 
-  const handleClick = value => () => {
+  const handleClick = (value) => () => {
     searchPlace(value);
     history.push('/place/' + value);
-    console.log(value)
-  }
+  };
 
   return (
     <div className="big__search">

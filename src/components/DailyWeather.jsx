@@ -11,7 +11,7 @@ function DailyWeather({ dailyWeatherDate, temprFormat, place }) {
   return (
     <div className="grid__container">
       <div className="grid1">
-      <h2>{place.name}, {place.sys.country}</h2>
+      <h2>{place}</h2>
         <p>{date}</p>
         <div>
           <div className="left">

@@ -7,9 +7,7 @@ import DailyWeather from '../components/DailyWeather';
 
 function PlaceWeather({searchPlace}) {
   const option = 'weatherManyDays';
-  const { fetchData, temprFormat, fetchPlace } = useFetch(option);
-
-  console.log('fetchData from placeWeather: ', fetchData);
+  const { fetchData, temprFormat, address } = useFetch(option);
 
   return (
     <div className="place__weather">
@@ -18,14 +16,14 @@ function PlaceWeather({searchPlace}) {
           <CurrWeather
             CurrWeatherData={fetchData.current}
             temprFormat={temprFormat}
-            place={fetchPlace}
+            place={address}
           />
           {fetchData.daily.map((daily) => (
             <DailyWeather
               key={daily.dt}
               dailyWeatherDate={daily}
               temprFormat={temprFormat}
-              place={fetchPlace}
+              place={address}
             />
           ))}
         </div>

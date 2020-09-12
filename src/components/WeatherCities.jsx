@@ -1,8 +1,7 @@
 import React from 'react';
+
 import { useFetch } from '../hooks/fetchData-hook';
 import { useHistory } from 'react-router-dom';
-// import { useFetch } from '../hooks/fetchData-hook';
-// import axios from 'axios';
 
 function WeatherCities({ searchPlace }) {
   const option = 'aroundCities';
@@ -10,18 +9,26 @@ function WeatherCities({ searchPlace }) {
 
   const { temprFormat, fetchData } = useFetch(option);
 
-  const handleClick = value => () => {
-    searchPlace(value);
-    history.push('/place/' + value);
-    console.log(value)
-  }
+
+  const handleClick = (fetchCity, coord) => () => {
+    const place = {
+      address: `${fetchCity.name}, ${fetchCity.sys.country}`,
+      coordinates: {
+        lat: coord.lat,
+        lng: coord.lon,
+      },
+    };
+  
+    searchPlace(place);
+    history.push('/place/' + fetchCity.name);
+  };
 
   return (
     <div className="weather__cities">
       <div className="weather__table">
         {fetchData &&
           fetchData.list.map((fetchCity) => (
-            <h3 key={fetchCity.id} onClick={handleClick(fetchCity.name)}>
+            <h3 key={fetchCity.id} onClick={handleClick(fetchCity, fetchCity.coord)}>
               {fetchCity.name}, {fetchCity.sys.country}
               <span>
                 {fetchCity.weather.map((weatherState) => (
